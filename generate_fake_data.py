@@ -96,8 +96,8 @@ for i,row in df.iterrows():
     orig_inside_mask = map_nii.get_data()[mask_nii.get_data() == 1]
 
     folder_name = "%04d"%i
-    if os.path.exists(data_location+"/images/fake_maps/%04d/"%(i)):
-        continue
+    #if os.path.exists(data_location+"/images/fake_maps/%04d/"%(i)):
+    #    continue
     get_ipython().system('mkdir -p '+data_location+'/images/fake_maps/{"%04d"%i}')
 
     template = orig_inside_mask.ravel()
