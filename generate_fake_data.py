@@ -14,6 +14,7 @@ import sys
 
 data_location = sys.argv[1]
 print(data_location)
+n_fake_maps = int(sys.argv[2])
 
 
 # In[2]:
@@ -110,4 +111,4 @@ for i,row in df.iterrows():
     t_quantiles /= t_quantiles[-1]
 
     from joblib import Parallel, delayed
-    Parallel(n_jobs=16)(delayed(save_fake_map)(orig_inside_mask, map_nii, row, mask_nii, t_quantiles, t_values, i, j) for j in range(100))
+    Parallel(n_jobs=16)(delayed(save_fake_map)(orig_inside_mask, map_nii, row, mask_nii, t_quantiles, t_values, i, j) for j in range(n_fake_maps))
