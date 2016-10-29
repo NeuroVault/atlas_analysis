@@ -73,7 +73,7 @@ for i, atlas_row in atlases.iterrows():
                                    "fake_map_id": None}, ignore_index=True)
 
         from joblib import Parallel, delayed
-        out = Parallel(n_jobs=2)(delayed(score_map)(data_location + "/images/fake_maps/%04d/%04d.nii.gz"%(image_id, fake_map_id),
+        out = Parallel(n_jobs=16)(delayed(score_map)(data_location + "/images/fake_maps/%04d/%04d.nii.gz"%(image_id, fake_map_id),
                                                                                    atlas_data,
                                                                                    labels) for fake_map_id in range(n_fake_maps))
         comparisons_df = comparisons_df.append(pd.DataFrame({"within_parcel_variance": list(np.array(out)[:, 0]),
